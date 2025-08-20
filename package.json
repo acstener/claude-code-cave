@@ -1,6 +1,6 @@
 {
   "name": "claude-cave-timer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Deep focus timer with distraction blocking for Claude Code users",
   "main": "cave.js",
   "bin": {

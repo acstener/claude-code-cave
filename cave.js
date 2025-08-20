@@ -132,7 +132,7 @@ class CaveTimer {
                     this.saveStatus(status);
                     
                     // System alert using native macOS (more reliable than notifications)
-                    exec(`osascript -e 'display alert "🚨 Cave Timer" message "Caught visiting ${blockedSite}! Stay focused!" buttons {"OK"} default button "OK"'`);
+                    exec(`osascript -e 'display alert "🚨 Cave Timer" message "You left the cave for ${blockedSite}! Get back to the vibes 🔥" buttons {"OK"} default button "OK"'`);
                     
                     // Play notification sound
                     exec(`osascript -e 'beep 2'`);
