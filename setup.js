@@ -10,7 +10,9 @@ console.log('\n🪨 Setting up Cave Timer integration with Claude Code...\n');
 const homeDir = os.homedir();
 const claudeDir = path.join(homeDir, '.claude');
 const statusScriptPath = path.join(claudeDir, 'cave-status.sh');
-const settingsPath = path.join(claudeDir, 'settings.json');
+const globalSettingsPath = path.join(claudeDir, 'settings.json');
+const localClaudeDir = path.join(process.cwd(), '.claude');
+const localSettingsPath = path.join(localClaudeDir, 'settings.json');
 
 // Create .claude directory if it doesn't exist
 if (!fs.existsSync(claudeDir)) {
@@ -53,39 +55,51 @@ fs.writeFileSync(statusScriptPath, statusScript);
 fs.chmodSync(statusScriptPath, 0o755); // Make executable
 console.log('✅ Created cave status script: ~/.claude/cave-status.sh');
 
-// Handle Claude Code settings.json
-let settings = {};
-let settingsUpdated = false;
+// Function to update settings file
+function updateSettingsFile(settingsPath, description) {
+    let settings = {};
+    let settingsUpdated = false;
 
-if (fs.existsSync(settingsPath)) {
-    try {
-        const settingsContent = fs.readFileSync(settingsPath, 'utf8');
-        settings = JSON.parse(settingsContent);
-        console.log('📖 Found existing Claude Code settings');
-    } catch (error) {
-        console.log('⚠️  Could not parse existing settings.json, will create new one');
-        settings = {};
+    if (fs.existsSync(settingsPath)) {
+        try {
+            const settingsContent = fs.readFileSync(settingsPath, 'utf8');
+            settings = JSON.parse(settingsContent);
+            console.log(`📖 Found existing ${description}`);
+        } catch (error) {
+            console.log(`⚠️  Could not parse ${description}, will create new one`);
+            settings = {};
+        }
+    } else {
+        console.log(`📝 Creating new ${description}`);
     }
-} else {
-    console.log('📝 Creating new Claude Code settings.json');
+
+    // Add or update status line configuration
+    if (!settings.statusLine || settings.statusLine.command !== '~/.claude/cave-status.sh') {
+        settings.statusLine = {
+            type: "command",
+            command: "~/.claude/cave-status.sh",
+            padding: 0
+        };
+        settingsUpdated = true;
+    }
+
+    // Write settings if updated
+    if (settingsUpdated) {
+        fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
+        console.log(`✅ Updated ${description}`);
+        return true;
+    } else {
+        console.log(`✅ ${description} already configured`);
+        return false;
+    }
 }
 
-// Add or update status line configuration
-if (!settings.statusLine || settings.statusLine.command !== '~/.claude/cave-status.sh') {
-    settings.statusLine = {
-        type: "command",
-        command: "~/.claude/cave-status.sh",
-        padding: 0
-    };
-    settingsUpdated = true;
-}
+// Update global settings
+updateSettingsFile(globalSettingsPath, 'global Claude Code settings');
 
-// Write settings if updated
-if (settingsUpdated) {
-    fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
-    console.log('✅ Updated Claude Code status line configuration');
-} else {
-    console.log('✅ Claude Code status line already configured');
+// Update local project settings if they exist
+if (fs.existsSync(localClaudeDir)) {
+    updateSettingsFile(localSettingsPath, 'local project Claude Code settings');
 }
 
 console.log('\n🎉 Cave Timer setup complete!');
