@@ -6,7 +6,6 @@ input=$(cat)
 
 # Check if cave timer is active
 CAVE_STATUS_FILE="$HOME/.claude-cave/status.json"
-TIP_SHOWN_FILE="$HOME/.claude-cave/tip_shown.json"
 
 if [ -f "$CAVE_STATUS_FILE" ]; then
     # Read the status file
@@ -33,21 +32,10 @@ if [ -f "$CAVE_STATUS_FILE" ]; then
             echo "🔒 CAVE MODE ACTIVE | Check timer with 'cave status'"
         fi
     else
-        # Only show tip once, then minimal status
-        if [ ! -f "$TIP_SHOWN_FILE" ]; then
-            echo "💡 Type 'cave start' to enter deep work mode"
-            echo '{"tip_shown": true}' > "$TIP_SHOWN_FILE"
-        else
-            echo "🌄 Cave Timer"
-        fi
+        # No output when not running - clean status bar
+        echo ""
     fi
 else
-    # Only show tip once, then minimal status
-    if [ ! -f "$TIP_SHOWN_FILE" ]; then
-        echo "🌄 Cave Timer ready | Type 'cave start' to begin"
-        mkdir -p "$(dirname "$TIP_SHOWN_FILE")"
-        echo '{"tip_shown": true}' > "$TIP_SHOWN_FILE"
-    else
-        echo "🌄 Cave Timer"
-    fi
+    # No output when Cave Timer doesn't exist - clean status bar
+    echo ""
 fi
