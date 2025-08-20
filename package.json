@@ -1,0 +1,15 @@
+{
+  "name": "cave-timer",
+  "version": "1.0.0",
+  "description": "Deep focus timer with distraction blocking",
+  "main": "cave.js",
+  "bin": {
+    "cave": "./cave.js"
+  },
+  "scripts": {
+    "start": "node cave.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

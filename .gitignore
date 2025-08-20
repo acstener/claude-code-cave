@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.DS_Store
+status.json
+stats.json
+tip_shown.json
+updated_dirs.json
