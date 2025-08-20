@@ -134,6 +134,9 @@ class CaveTimer {
                     // System alert using native macOS (more reliable than notifications)
                     exec(`osascript -e 'display alert "🪨 You left the cave" message "${blockedSite} is not good for the vibes. Get back to it" buttons {"Back to the cave"} default button "Back to the cave" giving up after 5'`);
                     
+                    // Play notification sound
+                    exec(`osascript -e 'beep 2'`);
+                    
                     // Wait 3 seconds before next check (shame mode)
                     await new Promise(resolve => setTimeout(resolve, 3000));
                 } else {
@@ -218,6 +221,9 @@ class CaveTimer {
 
         // System alert for session completion (more reliable than notifications)
         exec(`osascript -e 'display alert "🎉 CAVE SESSION COMPLETE!" message "Focused for ${elapsed} minutes. Great work!" buttons {"Awesome!"} default button "Awesome!" giving up after 10'`);
+        
+        // Play completion sound
+        exec(`osascript -e 'beep 3'`);
 
         console.log(`🎉 CAVE SESSION COMPLETE`);
         console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
