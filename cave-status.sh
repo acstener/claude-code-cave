@@ -24,18 +24,18 @@ if [ -f "$CAVE_STATUS_FILE" ]; then
             if [ $REMAINING -gt 0 ]; then
                 MINS=$((REMAINING / 60))
                 SECS=$((REMAINING % 60))
-                echo "🔒 CAVE MODE [$MINS:$(printf %02d $SECS)] | Type 'cave stop' to end"
+                echo "$input | 🔒 CAVE [$MINS:$(printf %02d $SECS)]"
             else
-                echo "✅ CAVE COMPLETE! | Run 'cave stop' to end session"
+                echo "$input | ✅ CAVE COMPLETE!"
             fi
         else
-            echo "🔒 CAVE MODE ACTIVE | Check timer with 'cave status'"
+            echo "$input | 🔒 CAVE MODE ACTIVE"
         fi
     else
-        # No output when not running - clean status bar
-        echo ""
+        # Show original status when not running
+        echo "$input"
     fi
 else
-    # No output when Cave Timer doesn't exist - clean status bar
-    echo ""
+    # Show original status when Cave Timer doesn't exist
+    echo "$input"
 fi
