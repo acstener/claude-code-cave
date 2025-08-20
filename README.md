@@ -6,9 +6,9 @@ A deep work focus timer designed specifically for Claude Code users. Cave Timer 
 
 🎯 **Deep Work Timer** - Customizable focus sessions (default 90 minutes)  
 🔒 **Smart Distraction Blocking** - Monitors Chrome/Safari and detects visits to distracting sites  
-🔔 **Gentle Shame Mode** - Native macOS notifications with sound when you get distracted  
+🔔 **Gentle Shame Mode** - Native macOS popup alerts when you get distracted  
 📊 **Session Analytics** - Track your focus sessions, streaks, and blocked distractions  
-⏱️ **Claude Code Integration** - Live timer in your status bar  
+⏱️ **Claude Code Integration** - Live timer in your status bar showing "🪨 In the cave: X minutes remaining"  
 🗣️ **Natural Language** - Commands like "focus for 2 hours" or "stop timer"
 
 ## Quick Start
@@ -184,15 +184,12 @@ rm -f ~/.claude/cave-status.sh
 
 ## Troubleshooting
 
-**Notifications not working?**
-- Ensure System Preferences > Notifications allows Terminal/Claude Code notifications
+See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed troubleshooting steps.
 
-**URL detection not working?**
-- Grant accessibility permissions to Terminal in System Preferences > Security & Privacy
-
-**Status bar not updating?**
-- Check Claude Code settings.json has correct statusLine configuration
-- Ensure cave-status.sh is executable: `chmod +x ~/.claude/cave-status.sh`
+**Common Issues:**
+- Status bar not showing → Check package version and script permissions
+- Notifications not working → Ensure System Preferences allows popup notifications
+- Package mismatch → Use `claude-cave-timer` NOT `@acstener/cave-timer`
 
 ## Contributing
 

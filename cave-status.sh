@@ -27,7 +27,8 @@ if [ $exit_code -ne 0 ] || [[ "$status_output" == *"No active session"* ]] || [[
     exit 0
 fi
 
-# Extract just the time remaining for compact display
+# Extract time remaining and format as cave-themed status
 if [[ "$status_output" == *"Time remaining:"* ]]; then
-    echo "$status_output" | grep -o "Time remaining: [0-9]* minutes" | sed 's/Time remaining: /🔥 /'
+    time_remaining=$(echo "$status_output" | grep -o "Time remaining: [0-9]* minutes" | sed 's/Time remaining: //')
+    echo "🪨 In the cave: ${time_remaining} remaining"
 fi
