@@ -131,8 +131,11 @@ class CaveTimer {
                     status.distractions_blocked++;
                     this.saveStatus(status);
                     
-                    // System notification using native macOS
-                    exec(`osascript -e 'display notification "Caught visiting ${blockedSite}!" with title "🚨 Cave Timer" sound name "Basso"'`);
+                    // System alert using native macOS (more reliable than notifications)
+                    exec(`osascript -e 'display alert "🚨 Cave Timer" message "Caught visiting ${blockedSite}! Stay focused!" buttons {"OK"} default button "OK"'`);
+                    
+                    // Play notification sound
+                    exec(`osascript -e 'beep 2'`);
                     
                     // Wait 3 seconds before next check (shame mode)
                     await new Promise(resolve => setTimeout(resolve, 3000));
