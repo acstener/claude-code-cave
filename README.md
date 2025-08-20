@@ -121,6 +121,56 @@ Track your productivity with built-in analytics:
 - Distractions blocked
 - Average session length
 
+## Uninstallation
+
+To completely remove Cave Timer:
+
+### Automatic Uninstall
+```bash
+# If you still have Cave Timer installed:
+~/.claude-cave/uninstall.sh
+
+# Or download and run the uninstall script:
+curl -fsSL https://raw.githubusercontent.com/acstener/claude-code-cave/main/uninstall.sh | bash
+```
+
+### Manual Uninstall
+```bash
+# Remove files
+rm -rf ~/.claude-cave
+
+# Remove shell alias (choose your shell)
+sed -i '' '/alias cave=/d' ~/.zshrc    # For zsh
+sed -i '' '/alias cave=/d' ~/.bashrc   # For bash
+
+# Remove Claude Code integration
+rm -f ~/.claude/cave-status.sh
+
+# Remove from Claude Code settings.json (manual)
+# Delete the "statusLine" section from ~/.claude/settings.json
+```
+
+### Manual Cleanup
+1. **Remove Cave Timer directory:**
+   ```bash
+   rm -rf ~/.claude-cave
+   ```
+
+2. **Remove shell alias:**
+   Edit your shell config (`~/.zshrc` or `~/.bashrc`) and delete:
+   ```bash
+   alias cave="node ~/.claude-cave/cave.js"
+   ```
+
+3. **Remove Claude Code integration:**
+   ```bash
+   rm -f ~/.claude/cave-status.sh
+   ```
+   Then remove the `statusLine` section from `~/.claude/settings.json`
+
+4. **Clean up project files (optional):**
+   Remove Cave Timer sections from any `CLAUDE.md` files in your projects
+
 ## Troubleshooting
 
 **Notifications not working?**
