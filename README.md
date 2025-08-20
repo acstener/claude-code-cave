@@ -109,6 +109,19 @@ Cave Timer monitors these distracting sites by default:
 4. **Focus Reinforcement** - Notifications every 3 seconds while on blocked sites
 5. **Progress Tracking** - Logs sessions, streaks, and distraction counts
 
+## Privacy & Security
+
+**Cave Timer is completely private and secure:**
+
+🔒 **No Data Collection** - URLs are only checked locally against a hardcoded list of blocked sites  
+🏠 **Stays on Your Machine** - No data is ever transmitted to external servers  
+📝 **No Logging** - Browser URLs are never stored, logged, or saved anywhere  
+🔍 **Read-Only Access** - Only reads current tab URL, cannot modify browser or access history  
+⚡ **Minimal Permissions** - Uses standard macOS AppleScript for browser tab access  
+🗑️ **Clean Uninstall** - Complete removal leaves no traces on your system  
+
+Your browsing data remains completely private to your machine.
+
 ## Requirements
 
 - macOS (uses AppleScript for browser monitoring)
