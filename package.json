@@ -1,15 +1,36 @@
 {
-  "name": "cave-timer",
+  "name": "@acstener/cave-timer",
   "version": "1.0.0",
-  "description": "Deep focus timer with distraction blocking",
+  "description": "Deep focus timer with distraction blocking for Claude Code users",
   "main": "cave.js",
   "bin": {
     "cave": "./cave.js"
   },
   "scripts": {
-    "start": "node cave.js"
+    "start": "node cave.js",
+    "postinstall": "node -e \"console.log('\\n🎉 Cave Timer installed! Run: cave start\\n')\""
+  },
+  "keywords": [
+    "focus",
+    "timer",
+    "productivity",
+    "claude-code",
+    "deep-work"
+  ],
+  "author": "acstener",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acstener/claude-code-cave.git"
+  },
+  "homepage": "https://github.com/acstener/claude-code-cave",
+  "bugs": {
+    "url": "https://github.com/acstener/claude-code-cave/issues"
   },
   "engines": {
     "node": ">=14.0.0"
-  }
+  },
+  "os": [
+    "darwin"
+  ]
 }

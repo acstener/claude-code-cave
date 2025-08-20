@@ -14,10 +14,8 @@ A deep work focus timer designed specifically for Claude Code users. Cave Timer 
 ## Quick Start
 
 ```bash
-# Clone and install
-git clone https://github.com/acstener/claude-code-cave.git ~/.claude-cave
-cd ~/.claude-cave
-./install.sh
+# Install via npm (easiest!)
+npm install -g @acstener/cave-timer
 
 # Start focusing!
 cave start          # 90-minute session
@@ -27,6 +25,19 @@ cave stop           # End session
 ```
 
 ## Installation
+
+### NPM Installation (Recommended)
+```bash
+npm install -g @acstener/cave-timer
+```
+
+### Git Installation
+```bash
+# Clone and install
+git clone https://github.com/acstener/claude-code-cave.git ~/.claude-cave
+cd ~/.claude-cave
+./install.sh
+```
 
 ### Automatic Installation
 ```bash
