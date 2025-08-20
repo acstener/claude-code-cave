@@ -132,10 +132,7 @@ class CaveTimer {
                     this.saveStatus(status);
                     
                     // System alert using native macOS (more reliable than notifications)
-                    exec(`osascript -e 'display alert "🚨 Cave Timer" message "You left the cave for ${blockedSite}! Get back to the vibes 🔥" buttons {"OK"} default button "OK"'`);
-                    
-                    // Play notification sound
-                    exec(`osascript -e 'beep 2'`);
+                    exec(`osascript -e 'display alert "🚨 DISTRACTION BLOCKED!" message "Caught visiting ${blockedSite}! Stay focused!" buttons {"OK"} default button "OK" giving up after 3'`);
                     
                     // Wait 3 seconds before next check (shame mode)
                     await new Promise(resolve => setTimeout(resolve, 3000));
@@ -219,11 +216,8 @@ class CaveTimer {
         
         this.saveStatus({ active: false });
 
-        notifier.notify({
-            title: '🎉 Cave Session Complete!',
-            message: `Focused for ${elapsed} minutes. Great work!`,
-            sound: true
-        });
+        // System alert for session completion (more reliable than notifications)
+        exec(`osascript -e 'display alert "🎉 CAVE SESSION COMPLETE!" message "Focused for ${elapsed} minutes. Great work!" buttons {"Awesome!"} default button "Awesome!" giving up after 10'`);
 
         console.log(`🎉 CAVE SESSION COMPLETE`);
         console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
