@@ -132,7 +132,7 @@ class CaveTimer {
                     this.saveStatus(status);
                     
                     // System alert using native macOS (more reliable than notifications)
-                    exec(`osascript -e 'display alert "🪨 You left the cave" message "${blockedSite} isn't good for the vibes. Get back to it" buttons {"Back to the cave"} default button "Back to the cave" giving up after 3'`);
+                    exec(`osascript -e 'display alert "🪨 You left the cave" message "${blockedSite} is not good for the vibes. Get back to it" buttons {"Back to the cave"} default button "Back to the cave" giving up after 3'`);
                     
                     // Wait 3 seconds before next check (shame mode)
                     await new Promise(resolve => setTimeout(resolve, 3000));
