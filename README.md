@@ -195,13 +195,22 @@ rm -f ~/.claude/cave-status.sh
 4. **Clean up project files (optional):**
    Remove Cave Timer sections from any `CLAUDE.md` files in your projects
 
-## Troubleshooting
+## Installation & Troubleshooting
 
-See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed troubleshooting steps.
+**Quick Install:**
+```bash
+npm install -g claude-cave-timer
+cave start  # Should just work!
+```
+
+**Having issues?** 
+- 📋 See [INSTALLATION_FAQ.md](INSTALLATION_FAQ.md) for step-by-step help
+- 🔧 See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for detailed debugging
+- 🤖 **Ask Claude Code directly!** Just say: *"Help me debug Cave Timer installation"*
 
 **Common Issues:**
 - Status bar not showing → Check package version and script permissions
-- Notifications not working → Ensure System Preferences allows popup notifications
+- Notifications not working → Ensure System Preferences allows popup notifications  
 - Package mismatch → Use `claude-cave-timer` NOT `@acstener/cave-timer`
 
 ## Contributing
