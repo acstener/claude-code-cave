@@ -26,6 +26,9 @@ const statusScript = `#!/bin/bash
 # Cave Timer Status Line Integration
 # Shows cave timer status in Claude Code status line
 
+# Consume JSON input from stdin (required by Claude Code status line API)
+input=$(cat)
+
 # Get cave timer status
 if command -v cave >/dev/null 2>&1; then
     # Use the cave command to get status

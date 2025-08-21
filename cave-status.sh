@@ -3,6 +3,9 @@
 # Cave Timer Status Script for Claude Code Status Line
 # This script displays the current cave timer status
 
+# Consume JSON input from stdin (required by Claude Code status line API)
+input=$(cat)
+
 # Check if cave command is available
 if ! command -v cave >/dev/null 2>&1; then
     # Try common installation locations
